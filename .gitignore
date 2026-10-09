@@ -1,0 +1,28 @@
+# Environment Files
+.env
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+carebridge.db
+
+# Node / React
+node_modules/
+dist/
+build/
+.output/
+
+# Docker & Temp
+data/uploads/*
+!data/uploads/.gitkeep
+second-brain/reviewer-decisions/*
+!second-brain/reviewer-decisions/.gitkeep
+
+# Uploaded documents and patient/demo files
+backend/uploads/*
+!backend/uploads/.gitkeep

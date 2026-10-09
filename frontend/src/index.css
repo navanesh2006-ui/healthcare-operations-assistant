@@ -1,0 +1,221 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #07161A;
+    --bg-deep: #0B1F22;
+    --bg-surface: #102A2A;
+    --bg-elevated: #163B33;
+    --text-main: #E9F6EC;
+    --text-muted: #8FB3A0;
+    --border-glass: rgba(124, 242, 176, 0.18);
+    --glow-color: rgba(124, 242, 176, 0.25);
+  }
+
+  .light {
+    --bg-primary: #F0F7F2;
+    --bg-deep: #E4F0E7;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #D4E8DA;
+    --text-main: #0B231A;
+    --text-muted: #2E5242;
+    --border-glass: rgba(30, 74, 56, 0.2);
+    --glow-color: rgba(76, 175, 80, 0.2);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Inter', 'Manrope', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+}
+
+/* Light theme text and input overrides */
+.light body {
+  color: #0B231A !important;
+}
+
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6, 
+.light .font-heading, .light .text-textLight, .light .text-white {
+  color: #0B231A !important;
+}
+
+.light .text-mutedText, .light .text-textLight\/60, .light .text-textLight\/70, .light .text-textLight\/80, .light .text-textLight\/90 {
+  color: #2E5242 !important;
+}
+
+/* Universal dropdown option styling for 100% black text readability */
+select option {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+.light select option {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+/* Universal High-Contrast Input, Textarea & Select Box Styling */
+input, textarea, select {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: rgba(30, 74, 56, 0.4) !important;
+  font-weight: 700 !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #475569 !important;
+  opacity: 1 !important;
+  font-weight: 600 !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #4CAF50 !important;
+  outline: none !important;
+}
+
+.light .bg-darkBg {
+  background-color: #F0F7F2 !important;
+  color: #0B231A !important;
+}
+
+.light .bg-panelBg {
+  background-color: #FFFFFF !important;
+  color: #0B231A !important;
+}
+
+.light .bg-surface {
+  background-color: #F8FAFC !important;
+  color: #0B231A !important;
+}
+
+/* Background Aurora Mesh & ECG Grid */
+.bg-mesh-pattern {
+  background-image: 
+    radial-gradient(ellipse at 10% 20%, rgba(30, 74, 56, 0.4) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, rgba(16, 42, 42, 0.5) 0%, transparent 45%),
+    linear-gradient(to right, rgba(124, 242, 176, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 242, 176, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+}
+
+.light .bg-mesh-pattern {
+  background-image: 
+    radial-gradient(ellipse at 10% 20%, rgba(76, 175, 80, 0.15) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, rgba(139, 195, 74, 0.12) 0%, transparent 45%),
+    linear-gradient(to right, rgba(30, 74, 56, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 74, 56, 0.06) 1px, transparent 1px);
+}
+
+/* Glassmorphism Surface Components */
+.glass-card {
+  background: rgba(16, 42, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(124, 242, 176, 0.2);
+  box-shadow: 0 12px 32px 0 rgba(7, 22, 26, 0.4);
+  border-radius: 20px;
+}
+
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(30, 74, 56, 0.2);
+  box-shadow: 0 8px 30px 0 rgba(30, 74, 56, 0.1);
+  color: #0B231A !important;
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(124, 242, 176, 0.4);
+  box-shadow: 0 16px 40px -8px rgba(7, 22, 26, 0.6), 0 0 20px -3px rgba(124, 242, 176, 0.2);
+}
+
+.light .glass-card-hover:hover {
+  border-color: rgba(76, 175, 80, 0.5);
+  box-shadow: 0 12px 36px -6px rgba(30, 74, 56, 0.15);
+}
+
+.glass-panel {
+  background: rgba(22, 59, 51, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(124, 242, 176, 0.15);
+  border-radius: 16px;
+}
+
+.light .glass-panel {
+  background: rgba(232, 244, 234, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 74, 56, 0.18);
+  border-radius: 16px;
+  color: #0B231A !important;
+}
+
+/* Skeleton Shimmer Loading */
+.skeleton-box {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(30, 74, 56, 0.4);
+  border-radius: 8px;
+}
+
+.light .skeleton-box {
+  background-color: rgba(212, 232, 218, 0.6);
+}
+
+.skeleton-box::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(124, 242, 176, 0.2) 20%,
+    rgba(124, 242, 176, 0.3) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+  content: '';
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(7, 22, 26, 0.6);
+}
+.light ::-webkit-scrollbar-track {
+  background: rgba(240, 247, 242, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: #1E4A38;
+  border-radius: 4px;
+}
+.light ::-webkit-scrollbar-thumb {
+  background: #8BC34A;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4CAF50;
+}
